@@ -20,4 +20,14 @@ public record CalculatorPage(WebDriver webDriver) {
                 .getText();
         assertEquals(expectedResult, result);
     }
+
+    public void checkExpressionExist(String xpath, String expression) {
+        String expressionHere = webDriver
+                .findElement(By.xpath(xpath))
+                .getText();
+        assertEquals(expression, expressionHere
+                .replace(" ", "")
+                .replace("=","")
+                .replace("×", "*"));
+    }
 }
