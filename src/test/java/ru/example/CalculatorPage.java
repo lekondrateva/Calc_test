@@ -11,7 +11,7 @@ public record CalculatorPage(WebDriver webDriver) {
     public void calculateIt(String xpath, String expression) {
         webDriver
                 .findElement(By.xpath(xpath))
-                .sendKeys(expression, Keys.ENTER);
+                .sendKeys(expression);
     }
 
     public void checkResult(String xpath, String expectedResult) {
@@ -19,6 +19,7 @@ public record CalculatorPage(WebDriver webDriver) {
                 .findElement(By.xpath(xpath))
                 .getText();
         assertEquals(expectedResult, result);
+        System.out.println(result);
     }
 
     public void checkExpressionExist(String xpath, String expression) {
@@ -27,7 +28,7 @@ public record CalculatorPage(WebDriver webDriver) {
                 .getText();
         assertEquals(expression, expressionHere
                 .replace(" ", "")
-                .replace("=","")
                 .replace("×", "*"));
+        System.out.println(expressionHere);
     }
 }

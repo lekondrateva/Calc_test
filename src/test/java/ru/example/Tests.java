@@ -20,7 +20,7 @@ public class Tests {
     private static final String CALC_INPUT_FIELD_XPATH = "//div[@class='jlkklc']";
     private static final String EXPECTED_RESULT_XPATH = "//span[@id='cwos']";
     private static final String EXPRESSION_XPATH = "//span[@class='vUGUtc']";
-    private static final String expression = "1*2-3+1";
+    private static final String expression = "1*2-3+1=";
     private static final String expectedResult = "0";
 
     static {
