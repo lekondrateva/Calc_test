@@ -1,5 +1,7 @@
 package ru.example;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.openqa.selenium.WebDriver;
@@ -30,10 +32,20 @@ public class Tests {
         calcPage = new CalculatorPage(webDriver);
     }
 
+    @Before
+    public void goUrl() {
+        webDriver.get(URL);
+    }
+
+    @After
+    public void shutDown() {
+        webDriver.quit();
+    }
+
     @Test
     @DisplayName("Вычислить значение выражения expression, результат expectedResult")
     public void calculateTheExpression() {
-        googleSearchPage.searchByGoogle(URL, SEARCH_FIELD_XPATH, searchBy);
+        googleSearchPage.searchByGoogle(SEARCH_FIELD_XPATH, searchBy);
         calcPage.calculateIt(CALC_INPUT_FIELD_XPATH, expression);
         calcPage.checkResult(EXPECTED_RESULT_XPATH, expectedResult);
     }
