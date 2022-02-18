@@ -33,11 +33,6 @@ public class Tests {
         calcPage = new CalculatorPage(webDriver);
     }
 
-    @Before
-    public void goUrl() {
-        webDriver.get(URL);
-    }
-
     @After
     public void shutDown() {
         webDriver.quit();
@@ -46,7 +41,7 @@ public class Tests {
     @Test
     @DisplayName("Вычислить значение выражения expression, результат expectedResult")
     public void calculateTheExpression() {
-        googleSearchPage.searchByGoogle(SEARCH_FIELD_XPATH, searchBy);
+        googleSearchPage.searchByGoogle(URL, SEARCH_FIELD_XPATH, searchBy);
         calcPage.calculateIt(CALC_INPUT_FIELD_XPATH, expression);
         calcPage.checkResult(EXPECTED_RESULT_XPATH, expectedResult);
         calcPage.checkExpressionExist(EXPRESSION_XPATH,expression);
